@@ -1,12 +1,14 @@
 const dotenv = require('dotenv').config();
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = process.env.PORT || 9177;
 
-
+app.use(cors());
+app.use(express.json());
 app.use('/api/', (_,res) => {
     res.json({data: 'API is PUSHIN'})
-})
+});
 
 app.listen(port, () =>{
     console.log(`The princess is here at port ${port}`);
